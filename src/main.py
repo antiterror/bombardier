@@ -1,10 +1,7 @@
-import sys
-
 import docker as docker_sdk
 import pandas as pd
 import yaml
-from itertools import islice
-import time
+
 
 from multiprocessing.dummy import Pool
 
@@ -16,12 +13,14 @@ sites = config['sites']
 # Docker image that already pull to local env
 image_name = config['image_name']
 
+number_conn = config['number_conn']
+timeout = config['timeout']
+
 
 # Set of the parallelism
 parallel_stream = config['parallel_stream']  # set number parallel streams
 docker = docker_sdk.from_env()
 
-#docker run -ti --rm alpine/bombardier -c 1000 -d 3600s -l https://www.gosuslugi.ru
 
 def main_process(site):
 
@@ -29,7 +28,7 @@ def main_process(site):
     print(name)
 
     docker.containers.run(image=image_name,
-                          command=f' -c 1 -d 3s -l {site}',
+                          command=f' -c {number_conn} -d {timeout} -l {site}',
                           name=f"{name}",
                           detach=False
                           )

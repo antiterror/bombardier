@@ -2,8 +2,12 @@
 image_name: "alpine/bombardier"
 
 # Set of the parallelism
-parallel_stream: 20  # set number parallel streams
+parallel_stream: 10  # set number parallel streams
 
+#docker run -ti --rm alpine/bombardier -c 1000 -d 3600s -l https://www.gosuslugi.ru
+
+number_conn: 1000
+timeout: 3600s
 
 sites: "
 http://www.kremlin.ru/
