@@ -5,7 +5,7 @@ Slava Ukraine
 
 1. install VPN https://hackenvpn.com and run it
 2. install Docker desktop https://hub.docker.com
-3. run Docker 
+3. run Docker docker run -ti --rm -v /var/run/docker.sock:/var/run/docker.sock antiterror8285/slava_ukraine
 
 
 #Note! There are others VPNs
