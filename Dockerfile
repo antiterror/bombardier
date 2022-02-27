@@ -1,10 +1,11 @@
 FROM python:3.9-slim-buster
-
-WORKDIR /src
-
 COPY requirements.txt requirements.txt
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+RUN mkdir /config
+COPY ./src/main.py .
+COPY ./src/config/param.yml ./config
 
-CMD [ "python", "-m" , "main.py"]
+CMD ["python3","main.py"]
+
